@@ -1,0 +1,29 @@
+@use "../../../../styles/abstracts/media" as *;
+@use "../../../../styles/abstracts/mixins" as *;
+
+.button {
+  @include flex-center;
+
+  gap: 12px;
+  padding: 10px 12px;
+  text-align: center;
+  border: var(--border-gray);
+  border-radius: var(--border-radius-small);
+
+  @include hover {
+    color: var(--primary-color-light);
+    background-color: var(--primary-color-dark);
+    border: var(--border-dark);
+
+    svg {
+      fill: var(--primary-color-light);
+    }
+  }
+
+  svg {
+    @include square(var(--icon-size));
+
+    fill: var(--primary-color-dark);
+    transition: fill var(--transition-duration) ease;
+  }
+}
