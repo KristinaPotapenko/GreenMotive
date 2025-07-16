@@ -1,0 +1,63 @@
+@use "../abstracts/media" as *;
+@use "../abstracts/mixins" as *;
+
+body {
+  @include fluid-text(18, 16);
+
+  font-family: var(--font-family-base);
+  line-height: 1.5;
+  color: var(--primary-color-dark);
+  background-color: var(--color-light-secondary);
+  overflow-x: hidden;
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#root {
+  min-height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.container {
+  position: relative;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: var(--container-padding-x);
+
+  @media (max-width: 1640) {
+    max-width: calc(1280px + (var(--container-padding-x) * 2));
+  }
+}
+
+.section {
+  padding-block: 75px;
+  min-height: calc(100vh - 100px);
+
+  @include desktop {
+    padding-block: 60px;
+  }
+}

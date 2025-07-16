@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "Helvetica";
+  font-weight: 400;
+  src: url("/assets/fonts/HelveticaRegular/HelveticaRegular.eot"),
+    url("/assets/fonts/HelveticaRegular/HelveticaRegular.woff") format("woff"),
+    url("/assets/fonts/HelveticaRegular/HelveticaRegular.woff") format("woff2"),
+    url("/assets/fonts/HelveticaRegular/HelveticaRegular.ttf")
+      format("truetype");
+}
+
+@font-face {
+  font-family: "Helvetica";
+  font-weight: 500;
+  src: url("/assets/fonts/HelveticaMedium/HelveticaMedium.eot"),
+    url("/assets/fonts/HelveticaMedium/HelveticaMedium.woff") format("woff"),
+    url("/assets/fonts/HelveticaMedium/HelveticaMedium.woff") format("woff2"),
+    url("/assets/fonts/HelveticaMedium/HelveticaMedium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Helvetica";
+  font-weight: 700;
+  src: url("/assets/fonts/HelveticaBold/HelveticaBold.eot"),
+    url("/assets/fonts/HelveticaBold/HelveticaBold.woff") format("woff"),
+    url("/assets/fonts/HelveticaBold/HelveticaBold.woff") format("woff2"),
+    url("/assets/fonts/HelveticaBold/HelveticaBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Helvetica";
+  font-weight: 900;
+  src: url("/assets/fonts/HelveticaBlack/HelveticaBlack.eot"),
+    url("/assets/fonts/HelveticaBlack/HelveticaBlack.woff") format("woff"),
+    url("/assets/fonts/HelveticaBlack/HelveticaBlack.woff") format("woff2"),
+    url("/assets/fonts/HelveticaBlack/HelveticaBlack.ttf") format("truetype");
+}

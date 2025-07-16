@@ -1,0 +1,46 @@
+@use "sass:math";
+@mixin fluid-text($max: 60, $min: 18) {
+  font-size: clamp(#{$min}px, #{math.div($max, 1920) * 100}vw, #{$max}px);
+}
+
+@mixin reset-link {
+  color: inherit;
+  outline: none;
+  cursor: pointer;
+
+  &,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@mixin reset-button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+@mixin flex-center($isInline: false) {
+  @if $isInline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}

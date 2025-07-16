@@ -1,0 +1,33 @@
+:root {
+  --primary-color-dark: #0f0f0f;
+  --primary-color-light: #f7f7f7;
+
+  --color-light-secondary: #eaeaea;
+  --color-dark-secondary: #7c7c7b;
+
+  --color-gray: #cdcdca;
+
+  --color-yellow: #f6f4d4;
+
+  --color-green: #dde4c3;
+
+  --border-gray: 2px solid var(--color-dark-secondary);
+  --border-gray-light: 2px solid var(--color-gray);
+  --border-dark: 2px solid var(--primary-color-dark);
+
+  --border-radius-small: 12px;
+  --border-radius-medium: 24px;
+  --border-radius-big: 100%;
+
+  --font-family-base: "Helvetica";
+
+  --container-padding-x: 16px;
+
+  --input-height: 34px;
+  --button-height: 34px;
+
+  --icon-size: 24px;
+  --icon-size-big: 48px;
+
+  --transition-duration: 0.3s;
+}
