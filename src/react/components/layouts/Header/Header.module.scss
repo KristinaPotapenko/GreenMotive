@@ -1,0 +1,60 @@
+@use "../../../../styles/abstracts/media" as *;
+@use "../../../../styles/abstracts/mixins" as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 20px;
+
+  &List {
+    @include flex-center;
+
+    gap: 32px;
+    padding: 12px;
+    background-color: var(--primary-color-dark);
+    border-radius: var(--border-radius-medium);
+  }
+
+  &Item {
+    padding-inline: 24px;
+    text-align: center;
+    color: var(--primary-color-light);
+
+    button {
+      @include reset-button;
+      @include flex-center;
+
+      gap: 8px;
+      padding: 16px 24px;
+    }
+
+    svg {
+      @include square(var(--icon-size));
+    }
+  }
+
+  &ItemActive {
+    color: var(--primary-color-dark);
+    background-color: var(--color-green);
+    border-radius: var(--border-radius-small);
+  }
+
+  &Link {
+    position: relative;
+
+    &::before {
+      content: "";
+
+      @include square(6px);
+
+      position: absolute;
+      top: 50%;
+      left: -24px;
+      transform: translate(0, -50%);
+      background-color: var(--primary-color-light);
+      border-radius: var(--border-radius-big);
+    }
+  }
+}
