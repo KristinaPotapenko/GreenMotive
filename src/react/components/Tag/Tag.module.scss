@@ -1,0 +1,18 @@
+.tag {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: var(--border-radius-small);
+
+  &Green {
+    background-color: var(--color-green);
+  }
+
+  &Dark {
+    color: var(--primary-color-light);
+    background-color: var(--primary-color-dark);
+  }
+
+  &White {
+    background-color: var(--primary-color-light);
+  }
+}
