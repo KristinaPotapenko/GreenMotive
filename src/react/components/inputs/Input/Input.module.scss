@@ -1,0 +1,16 @@
+.input {
+  width: 30vw;
+  min-width: 260px;
+  min-height: var(--input-height);
+  padding: 14px 20px;
+  font-size: 16px;
+  color: var(--primary-color-light);
+  background-color: var(--primary-color-dark);
+  border: none;
+  border-radius: var(--border-radius-small);
+  outline: none;
+
+  &::placeholder {
+    color: var(--color-gray);
+  }
+}
