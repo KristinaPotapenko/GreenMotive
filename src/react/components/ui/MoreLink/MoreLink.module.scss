@@ -1,0 +1,32 @@
+@use "../../../../styles/abstracts/mixins" as *;
+
+.link {
+  position: relative;
+  font-size: 16px;
+  text-decoration: underline;
+
+  &::after,
+  &::before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    right: -36px;
+    transform: translate(0, -50%);
+    display: block;
+    border-radius: var(--border-radius-big);
+  }
+
+  &::before {
+    @include square(6px);
+
+    right: -27px;
+    background-color: var(--primary-color-dark);
+  }
+
+  &::after {
+    @include square(var(--icon-size));
+
+    border: var(--border-gray-light);
+  }
+}
