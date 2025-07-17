@@ -1,0 +1,12 @@
+@use "../../../styles/abstracts/mixins" as *;
+
+.wrapper {
+  display: inline-block;
+  padding: 24px;
+  border: var(--border-gray-light);
+  border-radius: var(--border-radius-small);
+}
+
+.icon {
+  @include square(var(--icon-size-big));
+}
