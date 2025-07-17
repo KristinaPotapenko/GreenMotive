@@ -4,7 +4,6 @@ function App() {
   return (
     <div className="wrapper">
       <Header />
-      <main></main>
     </div>
   );
 }
