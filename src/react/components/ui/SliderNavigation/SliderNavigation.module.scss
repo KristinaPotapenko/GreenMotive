@@ -1,0 +1,22 @@
+@use "../../../../styles/abstracts/media" as *;
+@use "../../../../styles/abstracts/mixins" as *;
+
+.navigation {
+  display: flex;
+  align-items: center;
+
+  &Item {
+    @include square(var(--icon-size-big));
+    @include flex-center;
+
+    color: var(--color-gray);
+    border: var(--border-gray-light);
+    border-radius: var(--border-radius-big);
+    transition: all var(--transition-duration) ease;
+    cursor: pointer;
+
+    &Active {
+      color: var(--primary-color-dark);
+    }
+  }
+}
