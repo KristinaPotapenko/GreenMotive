@@ -1,0 +1,33 @@
+@use "../../../../styles/abstracts/media" as *;
+@use "../../../../styles/abstracts/mixins" as *;
+
+footer.footer {
+  margin: 32px auto 32px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  @include mobile {
+    flex-direction: column;
+  }
+
+  &Form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &Button {
+    @include reset-button;
+
+    min-height: var(--button-height);
+    padding: 14px 24px;
+    font-weight: 500;
+    background-color: var(--color-green);
+    border-radius: var(--border-radius-small);
+  }
+}
