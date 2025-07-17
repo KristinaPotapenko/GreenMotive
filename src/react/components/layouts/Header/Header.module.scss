@@ -2,25 +2,33 @@
 @use "../../../../styles/abstracts/mixins" as *;
 
 .header {
+  position: sticky !important;
+  top: 20px;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding-top: 20px;
 
   &List {
     @include flex-center;
 
     gap: 32px;
-    padding: 12px;
+    padding: 8px;
     background-color: var(--primary-color-dark);
     border-radius: var(--border-radius-medium);
   }
 
   &Item {
-    padding-inline: 24px;
     text-align: center;
+    text-wrap: nowrap;
     color: var(--primary-color-light);
+
+    &Active {
+      color: var(--primary-color-dark);
+      background-color: var(--color-green);
+      border-radius: var(--border-radius-small);
+    }
 
     button {
       @include reset-button;
@@ -35,14 +43,9 @@
     }
   }
 
-  &ItemActive {
-    color: var(--primary-color-dark);
-    background-color: var(--color-green);
-    border-radius: var(--border-radius-small);
-  }
-
   &Link {
     position: relative;
+    padding-right: 12px;
 
     &::before {
       content: "";
@@ -51,7 +54,7 @@
 
       position: absolute;
       top: 50%;
-      left: -24px;
+      left: -12px;
       transform: translate(0, -50%);
       background-color: var(--primary-color-light);
       border-radius: var(--border-radius-big);
