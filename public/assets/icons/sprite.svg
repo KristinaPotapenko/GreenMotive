@@ -19,21 +19,23 @@ l-29 3 47 59 c47 59 64 61 45 6z">
       </path>
     </g>
   </symbol>
-  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 41" id="heart">
-    <g filter="url(#filter0_d_542_11)">
-      <path d="M10.881 6.58L5 12.16L19.2381 26.42M10.881 6.58L16.7619 1L24.8095 9.06L32.8571 1L38.4286 6.58M10.881 6.58L24.8095 20.84L24.1119 21.5387M19.2381 26.42L24.8095 32L44 12.16L38.4286 6.58M19.2381 26.42L24.1119 21.5387M38.4286 6.58L24.1119 21.5387" stroke="black" shape-rendering="crispEdges"></path>
-    </g>
-    <defs>
-      <filter id="filter0_d_542_11" x="0.283691" y="0.292236" width="48.4172" height="40.4211" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-        <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
-        <feOffset dy="4"></feOffset>
-        <feGaussianBlur stdDeviation="2"></feGaussianBlur>
-        <feComposite in2="hardAlpha" operator="out"></feComposite>
-        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
-        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_542_11"></feBlend>
-        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_542_11" result="shape"></feBlend>
-      </filter>
-    </defs>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 33" id="heart">
+    <path d="M6.88095 6.58L1 12.16L15.2381 26.42M6.88095 6.58L12.7619 1L20.8095 9.06L28.8571 1L34.4286 6.58M6.88095 6.58L20.8095 20.84L20.1119 21.5387M15.2381 26.42L20.8095 32L40 12.16L34.4286 6.58M15.2381 26.42L20.1119 21.5387M34.4286 6.58L20.1119 21.5387" stroke="black"></path>
+  </symbol>
+    <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" id="development">
+    <line y1="15" x2="12" y2="15" stroke="#0F0F0F" stroke-width="6"></line>
+    <line x1="18" y1="15" x2="30" y2="15" stroke="#0F0F0F" stroke-width="6"></line>
+    <line x1="15" y1="1.20206e-07" x2="15" y2="12" stroke="#0F0F0F" stroke-width="6"></line>
+    <line x1="15" y1="18" x2="15" y2="30" stroke="#0F0F0F" stroke-width="6"></line>
+  </symbol>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 26" id="manegement">
+    <path d="M3 20V9L9 3H21" stroke="#0F0F0F" stroke-width="6"></path>
+    <path d="M24 6L24 17L18 23L6 23" stroke="#0F0F0F" stroke-width="6"></path>
+  </symbol>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" id="resources">
+    <line y1="15" x2="12" y2="15" stroke="#0F0F0F" stroke-width="6"></line>
+    <line x1="18" y1="15" x2="30" y2="15" stroke="#0F0F0F" stroke-width="6"></line>
+    <line x1="15" y1="1.20206e-07" x2="15" y2="12" stroke="#0F0F0F" stroke-width="6"></line>
+    <line x1="15" y1="18" x2="15" y2="30" stroke="#0F0F0F" stroke-width="6"></line>
   </symbol>
 </svg>
