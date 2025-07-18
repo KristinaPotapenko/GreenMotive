@@ -1,7 +1,7 @@
+@use "../../../../styles/abstracts/media" as *;
 @use "../../../../styles/abstracts/mixins" as *;
 
 .card {
-  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +13,16 @@
   background: rgba(175, 175, 175, 0.1);
   backdrop-filter: blur(10px);
   border-radius: var(--border-radius-small);
+
+  @include tablet {
+    flex: 0 0 calc(100% / 2);
+    max-width: none;
+  }
+
+  @include mobile {
+    flex: 0 0 calc(100%);
+    max-width: 100vw;
+  }
 
   &Icon {
     @include square(var(--icon-size-big));
