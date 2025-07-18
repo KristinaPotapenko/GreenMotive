@@ -7,13 +7,12 @@
   gap: 12px;
   padding: 10px 12px;
   text-align: center;
-  border: var(--border-gray);
+  border: var(--border-dark);
   border-radius: var(--border-radius-small);
 
   @include hover {
     color: var(--primary-color-light);
     background-color: var(--primary-color-dark);
-    border: var(--border-dark);
 
     svg {
       fill: var(--primary-color-light);
