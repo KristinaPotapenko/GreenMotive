@@ -4,11 +4,16 @@
 .header {
   position: sticky !important;
   top: 20px;
-  z-index: 10;
+  z-index: 2;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+
+  @include tablet {
+    flex-direction: column;
+  }
 
   &List {
     @include flex-center;
@@ -17,6 +22,14 @@
     padding: 8px;
     background-color: var(--primary-color-dark);
     border-radius: var(--border-radius-medium);
+
+    @include tablet {
+      flex-direction: row-reverse;
+
+      li:last-child {
+        padding-left: 12px;
+      }
+    }
   }
 
   &Item {
