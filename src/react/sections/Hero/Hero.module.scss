@@ -1,0 +1,127 @@
+@use "../../..//styles/abstracts/media" as *;
+@use "../../..//styles/abstracts/mixins" as *;
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: calc(100vh - 100px) !important;
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 80%
+    );
+    pointer-events: none;
+  }
+
+  &Desktop {
+    @include tablet-above {
+      display: contents;
+    }
+  }
+
+  &Title {
+    @include fluid-text(60, 40);
+
+    max-width: 450px;
+    font-weight: 500;
+    line-height: 1;
+    text-transform: uppercase;
+    margin-top: 40px;
+    margin-bottom: 50px;
+  }
+
+  &Inner {
+    display: contents;
+
+    @include tablet {
+      display: block;
+      margin-top: auto;
+    }
+  }
+
+  &Wrapper {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+
+    @include desktop {
+      gap: 24px;
+    }
+  }
+
+  &Description {
+    @include fluid-text(32, 24);
+
+    max-width: 520px;
+    font-weight: 500;
+    line-height: 1.1;
+
+    @include desktop {
+      max-width: 400px;
+    }
+
+    @include tablet {
+      max-width: fit-content;
+      margin-bottom: 24px;
+      font-size: 40px;
+    }
+  }
+
+  &Slider {
+    padding-top: 60px;
+    padding-bottom: 24px;
+    margin-top: auto;
+
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+  }
+
+  &Bg {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    max-width: 40vw;
+    width: 100%;
+    max-height: 70vh;
+    height: 100%;
+    background-image: url("./images/mount-bg.png");
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: cover;
+    transform: scaleX(-1);
+
+    mask-image: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 1) 80%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    mask-composite: intersect;
+
+    @include tablet {
+      max-width: 100vw;
+      max-height: 70vh;
+      mask-image: linear-gradient(
+          to left,
+          rgba(0, 0, 0, 1) 80%,
+          rgba(0, 0, 0, 0) 100%
+        ),
+        linear-gradient(to right, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+    }
+  }
+}
