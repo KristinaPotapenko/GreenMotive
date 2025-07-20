@@ -1,0 +1,78 @@
+@use "../../../styles/abstracts/media" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+.vision {
+  position: relative;
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    top: -2px;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 70px;
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 80%
+    );
+    pointer-events: none;
+  }
+
+  &Info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 48px;
+
+    @include tablet {
+      flex-direction: column-reverse;
+      align-items: start;
+    }
+  }
+
+  &Video {
+    width: 100%;
+    margin-top: 100px;
+    border-radius: var(--border-radius-small);
+  }
+
+  &Wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &Description {
+    @include fluid-text(32, 24);
+
+    max-width: 530px;
+    font-weight: 700;
+    line-height: 1;
+
+    @include tablet {
+      max-width: 420px;
+    }
+  }
+
+  &Title {
+    @include fluid-text(240, 90);
+
+    font-weight: 700;
+    line-height: 1;
+  }
+}
