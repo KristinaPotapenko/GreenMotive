@@ -26,6 +26,8 @@
   }
 
   &Desktop {
+    min-height: 100vh;
+
     @include tablet-above {
       display: contents;
     }
