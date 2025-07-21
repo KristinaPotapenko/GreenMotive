@@ -1,12 +1,27 @@
 @use "../../../styles/abstracts/mixins" as *;
 
 .wrapper {
+  position: relative;
   display: inline-block;
   padding: 24px;
+  z-index: 0;
+}
+
+.border {
+  position: absolute;
+  inset: 0;
   border: var(--border-gray-light);
   border-radius: var(--border-radius-small);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  z-index: 1;
+  pointer-events: none;
+  background-color: transparent;
 }
 
 .icon {
   @include square(var(--icon-size-big));
+
+  position: relative;
+  z-index: 2;
 }
