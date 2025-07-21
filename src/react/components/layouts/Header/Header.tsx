@@ -1,18 +1,29 @@
+import { useEffect, useRef } from "react";
 import cl from "classnames";
+
+import { useWindowWidth } from "../../../../scripts/hooks/useWindowWidth";
+import { animation } from "./animation";
 
 import { Logo } from "../../Logo/Logo";
 import { Navigation } from "./Navigation/Navigation";
 import { NavigationLink } from "../../ui/NavigationLink/NavigationLink";
 
 import styles from "./Header.module.scss";
-import { useWindowWidth } from "../../../../scripts/hooks/useWindowWidth";
 
 export const Header = () => {
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    if (headerRef.current) {
+      animation(headerRef);
+    }
+  }, []);
+
   const windowWidth = useWindowWidth();
   const isTablet = windowWidth <= 1023;
 
   return (
-    <header className={cl(styles.header, "container")}>
+    <header ref={headerRef} className={cl(styles.header, "container")}>
       {!isTablet && <Logo />}
       <Navigation />
       {!isTablet && (
