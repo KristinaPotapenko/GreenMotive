@@ -54,7 +54,6 @@ main {
 .section {
   padding-top: 80px;
   padding-bottom: 40px;
-  min-height: calc(100vh);
 
   @include desktop {
     padding-top: 60px;
