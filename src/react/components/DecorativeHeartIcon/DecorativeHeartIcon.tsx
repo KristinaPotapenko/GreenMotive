@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
-import styles from "./DecorativeHeartIcon.module.scss";
 import gsap from "gsap";
+
+import styles from "./DecorativeHeartIcon.module.scss";
 
 export const DecorativeHeartIcon = () => {
   const borderRef = useRef(null);

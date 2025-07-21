@@ -1,9 +1,9 @@
+import { useEffect, useRef } from "react";
 import type React from "react";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
 
 import styles from "./MoreLink.module.scss";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
 
 interface MoreLinkProps {
   path: string;

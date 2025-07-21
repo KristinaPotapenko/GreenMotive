@@ -1,10 +1,10 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
 
 import { scrollToTop } from "../../../scripts/helpers/scrollToTop";
 
 import styles from "./Logo.module.scss";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
 
 export const Logo = () => {
   const logoIconRef = useRef(null);

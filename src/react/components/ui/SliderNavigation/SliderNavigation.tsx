@@ -1,8 +1,8 @@
+import { useEffect } from "react";
+import gsap from "gsap";
 import cl from "classnames";
 
 import styles from "./SliderNavigation.module.scss";
-import { useEffect } from "react";
-import gsap from "gsap";
 
 export const SliderNavigation = () => {
   useEffect(() => {
