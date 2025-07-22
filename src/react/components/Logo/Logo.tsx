@@ -1,12 +1,21 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { scrollToTop } from "../../../scripts/helpers/scrollToTop";
 
 import styles from "./Logo.module.scss";
 
-export const Logo = () => {
+gsap.registerPlugin(ScrollTrigger);
+
+interface LogoProps {
+  section?: React.RefObject<HTMLElement | null>;
+}
+
+export const Logo = ({ section }: LogoProps) => {
+  const logoRef = useRef(null);
   const logoIconRef = useRef(null);
 
   useEffect(() => {
@@ -18,8 +27,32 @@ export const Logo = () => {
     });
   }, []);
 
+  useEffect(() => {
+    if (!section?.current) return;
+
+    gsap.fromTo(
+      logoRef.current,
+      {
+        y: 40,
+        opacity: 0,
+      },
+      {
+        scrollTrigger: {
+          trigger: section.current,
+          start: "top bottom",
+          end: "bottom bottom",
+          scrub: true,
+        },
+        y: 0,
+        opacity: 1,
+        delay: 0.2,
+        duration: 1.5,
+      }
+    );
+  }, []);
+
   return (
-    <Link className={styles.logo} to="/" onClick={scrollToTop}>
+    <Link ref={logoRef} className={styles.logo} to="/" onClick={scrollToTop}>
       <svg ref={logoIconRef} className={styles.logoIcon}>
         <use
           xlinkHref={`${import.meta.env.BASE_URL}assets/icons/sprite.svg#logo`}
