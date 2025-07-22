@@ -38,6 +38,10 @@
     width: 100%;
     margin-top: 100px;
     border-radius: var(--border-radius-small);
+
+    @include mobile {
+      min-height: 40%;
+    }
   }
 
   &Wrapper {
