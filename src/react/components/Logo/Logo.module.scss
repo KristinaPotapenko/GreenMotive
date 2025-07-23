@@ -7,9 +7,24 @@
 
   &Icon {
     @include square(var(--icon-size-big));
+
+    transition: transform 0.5s ease-out;
   }
 
   &Text {
     font-weight: 500;
+  }
+
+  &:hover &Icon {
+    animation: rotateIcon 3s linear infinite;
+  }
+}
+
+@keyframes rotateIcon {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
