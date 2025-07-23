@@ -29,5 +29,13 @@ footer.footer {
     font-weight: 500;
     background-color: var(--color-green);
     border-radius: var(--border-radius-small);
+
+    &:hover,
+    &:active,
+    &:focus {
+      transform: scale(1.05);
+      background-color: var(--color-green-active);
+      transition: transform 0.4s ease;
+    }
   }
 }
