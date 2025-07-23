@@ -1,3 +1,4 @@
+@use "../../../../styles/abstracts/media" as *;
 @use "../../../../styles/abstracts/mixins" as *;
 
 .link {
@@ -15,6 +16,7 @@
     transform: translate(0, -50%);
     display: block;
     border-radius: var(--border-radius-big);
+    transition: all 0.4s ease;
   }
 
   &::before {
@@ -22,11 +24,57 @@
 
     right: -27px;
     background-color: var(--primary-color-dark);
+    animation: pulse 2s infinite;
   }
 
   &::after {
     @include square(var(--icon-size));
 
     border: var(--border-gray-light);
+  }
+
+  @include hover {
+    &::after {
+      right: -33px;
+      transform: translate(0, -50%) scale(1.2);
+    }
+
+    &::before {
+      @include square(12px);
+
+      opacity: 1;
+      transform: scale(1.5);
+      animation: pulse-large 2s infinite;
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateY(-50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.5);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes pulse-large {
+  0% {
+    transform: translateY(-50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.25);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 0.6;
   }
 }
