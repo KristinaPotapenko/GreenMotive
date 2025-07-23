@@ -36,6 +36,7 @@
     text-align: center;
     text-wrap: nowrap;
     color: var(--primary-color-light);
+    transition: background-color 0.3s ease, color 0.3s ease;
 
     &Active {
       color: var(--primary-color-dark);
@@ -49,16 +50,36 @@
 
       gap: 8px;
       padding: 16px 24px;
+      transition: transform 0.3s ease;
     }
 
     svg {
       @include square(var(--icon-size));
+
+      transition: transform 0.3s ease;
+    }
+
+    &Active:hover {
+      background-color: var(--color-green-active);
+    }
+
+    @include hover {
+      button {
+        animation: textBounce 0.8s ease;
+      }
+
+      svg {
+        animation: iconJump 0.8s ease;
+      }
     }
   }
 
   &Link {
     position: relative;
+    display: inline-block;
     padding-right: 12px;
+    color: var(--primary-color-light);
+    transition: transform 0.3s ease, color 0.3s ease;
 
     &::before {
       content: "";
@@ -71,6 +92,43 @@
       transform: translate(0, -50%);
       background-color: var(--primary-color-light);
       border-radius: var(--border-radius-big);
+      transition: transform 0.3s ease, background-color 0.3s ease;
     }
+
+    @include hover {
+      transform: translateX(4px);
+      color: var(--color-green);
+
+      &::before {
+        background-color: var(--color-green);
+      }
+    }
+  }
+}
+
+@keyframes iconJump {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-6px);
+  }
+  60% {
+    transform: translateY(3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes textBounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
   }
 }
