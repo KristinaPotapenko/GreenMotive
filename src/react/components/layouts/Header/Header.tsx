@@ -24,7 +24,7 @@ export const Header = () => {
 
   return (
     <header ref={headerRef} className={cl(styles.header, "container")}>
-      {!isTablet && <Logo />}
+      {!isTablet && <Logo section={headerRef} />}
       <Navigation />
       {!isTablet && (
         <NavigationLink path="/">
