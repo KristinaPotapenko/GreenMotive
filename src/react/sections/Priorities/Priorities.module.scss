@@ -2,6 +2,8 @@
 @use "../../../styles/abstracts/mixins" as *;
 
 .priorities {
+  min-height: 100vh;
+
   &::after {
     content: "";
 
