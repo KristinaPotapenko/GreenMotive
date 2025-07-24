@@ -2,21 +2,23 @@
 
 .wrapper {
   position: relative;
+  z-index: 0;
   display: inline-block;
   padding: 24px;
-  z-index: 0;
+  transform-style: preserve-3d;
+  perspective: 600px;
 }
 
 .border {
   position: absolute;
-  inset: 0;
+  z-index: 1;
+  background-color: transparent;
   border: var(--border-gray-light);
   border-radius: var(--border-radius-small);
+  inset: 0;
   transform: scaleY(0);
   transform-origin: bottom;
-  z-index: 1;
   pointer-events: none;
-  background-color: transparent;
 }
 
 .icon {
@@ -24,4 +26,7 @@
 
   position: relative;
   z-index: 2;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+  will-change: transform;
 }
