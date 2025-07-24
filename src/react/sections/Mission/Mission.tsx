@@ -1,45 +1,238 @@
+import { useEffect, useRef } from "react";
 import cl from "classnames";
+
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 
 import { useWindowWidth } from "../../../scripts/hooks/useWindowWidth";
 
 import { Tag } from "../../components/Tag/Tag";
 import { NavigationLink } from "../../components/ui/NavigationLink/NavigationLink";
 
+import styles from "./Mission.module.scss";
+
 import windmillImage from "./images/windmills.jpg";
 
-import styles from "./Mission.module.scss";
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(SplitText);
 
 export const Mission = () => {
   const windowWidth = useWindowWidth();
   const isTablet = windowWidth <= 1023;
 
+  const sectionRef = useRef(null);
+  const tagsRef = useRef(null);
+  const titleRef = useRef(null);
+  const wrapperRef = useRef(null);
+  const imageRef = useRef(null);
+  const descriptionRef = useRef(null);
+
+  useEffect(() => {
+    if (!tagsRef.current || !sectionRef.current) return;
+
+    if (isTablet) {
+      gsap.fromTo(
+        tagsRef.current,
+        {
+          y: 0,
+          opacity: 1,
+        },
+        {
+          y: -80,
+          opacity: 0.2,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "center center",
+            end: "+=600px",
+            scrub: true,
+          },
+        }
+      );
+    } else {
+      gsap.fromTo(
+        tagsRef.current,
+        {
+          y: 80,
+          opacity: 0.2,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "-20% center",
+            end: "center center",
+            scrub: true,
+          },
+        }
+      );
+    }
+  }, [isTablet]);
+
+  useEffect(() => {
+    if (!wrapperRef.current || !sectionRef.current) return;
+
+    if (isTablet) return;
+
+    gsap.fromTo(
+      wrapperRef.current,
+      {
+        opacity: 0,
+        y: 40,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        delay: 0.2,
+        duration: 1.5,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "-10% center",
+          toggleActions: "play none none reset",
+        },
+      }
+    );
+  }, [isTablet]);
+
+  useEffect(() => {
+    if (!imageRef.current || !sectionRef.current) return;
+
+    if (isTablet) {
+      gsap.fromTo(
+        imageRef.current,
+        {
+          y: 0,
+          opacity: 1,
+        },
+        {
+          y: -80,
+          opacity: 1,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "center center",
+            end: "bottom top-=50px",
+            scrub: true,
+          },
+        }
+      );
+
+      return;
+    }
+
+    gsap.fromTo(
+      imageRef.current,
+      {
+        y: 0,
+        opacity: 1,
+      },
+      {
+        y: -160,
+        opacity: 1,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "center center",
+          end: "bottom top-=50px",
+          scrub: true,
+        },
+      }
+    );
+  }, [isTablet]);
+
+  useEffect(() => {
+    if (!descriptionRef.current || !sectionRef.current) return;
+
+    gsap.fromTo(
+      descriptionRef.current,
+      {
+        y: 0,
+        opacity: 1,
+      },
+      {
+        y: -100,
+        opacity: 0.4,
+        ease: "power1.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "center center",
+          end: "bottom top-=50px",
+          scrub: true,
+        },
+      }
+    );
+  }, []);
+
+  useEffect(() => {
+    if (!titleRef.current) return;
+
+    const splitInstance = new SplitText(titleRef.current, {
+      type: "lines,words",
+      linesClass: "line",
+    });
+
+    gsap.fromTo(
+      splitInstance.lines,
+      {
+        y: 30,
+        autoAlpha: 0,
+        opacity: 0,
+      },
+      {
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 80%",
+          scrub: true,
+        },
+        y: 0,
+        opacity: 1,
+        autoAlpha: 1,
+        stagger: 0.1,
+        delay: 0.2,
+        duration: 1.5,
+        ease: "power3.out",
+      }
+    );
+
+    return () => {
+      splitInstance.revert();
+    };
+  }, [isTablet]);
+
   return (
-    <section className={cl("section", "container", styles.mission)}>
-      <div className={styles.missionTags}>
+    <section
+      ref={sectionRef}
+      className={cl("section", "container", styles.mission)}
+    >
+      <div ref={tagsRef} className={styles.missionTags}>
         <Tag label="Technologies" theme="Green" />
         <Tag label="Solutions" theme="Dark" />
       </div>
       {!isTablet && (
-        <h2 className={styles.missionTitle}>
+        <h2 ref={titleRef} className={styles.missionTitle}>
           Our mission is to create a sustainable world by leading in green
           technology innovation. With a vision of reducing humanity`s impact on
           the planet, we work toward solutions that support a cleaner, more
           resilient future for all.
         </h2>
       )}
-      <div className={styles.missionWrapper}>
+      <div ref={wrapperRef} className={styles.missionWrapper}>
         <img
+          ref={imageRef}
           className={styles.missionImage}
           src={windmillImage}
           alt="Windmills"
         />
-        <p className={styles.missionDescription}>
+        <p ref={descriptionRef} className={styles.missionDescription}>
           Our innovative green technologies pave the way for energy efficiency,
           resource conservation, and environmental restoration.
         </p>
       </div>
       {isTablet && (
-        <NavigationLink path="/">
+        <NavigationLink section={sectionRef} path="/">
           <svg>
             <use
               xlinkHref={`${

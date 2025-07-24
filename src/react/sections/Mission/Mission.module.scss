@@ -4,6 +4,7 @@
 .mission {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 
   @include tablet {
     align-items: start;
@@ -43,6 +44,7 @@
 
   &Title {
     max-width: 940px;
+    margin-bottom: 60px;
     font-size: 48px;
     font-weight: 500;
     line-height: 1;
