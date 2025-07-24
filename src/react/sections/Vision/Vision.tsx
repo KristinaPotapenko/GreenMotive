@@ -1,12 +1,13 @@
+import { useEffect, useRef } from "react";
 import cl from "classnames";
+
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { MoreLink } from "../../components/ui/MoreLink/MoreLink";
 
 import styles from "./Vision.module.scss";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
