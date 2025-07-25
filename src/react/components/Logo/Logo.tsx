@@ -52,7 +52,12 @@ export const Logo = ({ section }: LogoProps) => {
   }, []);
 
   return (
-    <Link ref={logoRef} className={styles.logo} to="/" onClick={scrollToTop}>
+    <Link
+      ref={logoRef}
+      className={styles.logo}
+      to="/#header"
+      onClick={scrollToTop}
+    >
       <svg ref={logoIconRef} className={styles.logoIcon}>
         <use
           xlinkHref={`${import.meta.env.BASE_URL}assets/icons/sprite.svg#logo`}

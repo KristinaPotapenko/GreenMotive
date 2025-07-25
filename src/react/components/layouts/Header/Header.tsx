@@ -23,11 +23,15 @@ export const Header = () => {
   const isTablet = windowWidth <= 1023;
 
   return (
-    <header ref={headerRef} className={cl(styles.header, "container")}>
+    <header
+      id="header"
+      ref={headerRef}
+      className={cl(styles.header, "container")}
+    >
       {!isTablet && <Logo section={headerRef} />}
       <Navigation />
       {!isTablet && (
-        <NavigationLink path="/">
+        <NavigationLink path="/#vision">
           <svg>
             <use
               xlinkHref={`${

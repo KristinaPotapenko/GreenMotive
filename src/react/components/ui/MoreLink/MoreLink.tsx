@@ -8,14 +8,18 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./MoreLink.module.scss";
 
 interface MoreLinkProps {
-  path: string;
+  path?: string;
   section?: React.RefObject<HTMLElement | null>;
   children: React.ReactNode;
 }
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const MoreLink = ({ path, section, children }: MoreLinkProps) => {
+export const MoreLink = ({
+  path = "/#mission",
+  section,
+  children,
+}: MoreLinkProps) => {
   const linkRef = useRef(null);
 
   useEffect(() => {

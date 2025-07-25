@@ -28,7 +28,7 @@ export const Navigation = () => {
         {isTablet ? (
           <Logo />
         ) : (
-          <Link className={styles.headerLink} to="/">
+          <Link className={styles.headerLink} to="/#priorities">
             Discover Innovation
           </Link>
         )}
