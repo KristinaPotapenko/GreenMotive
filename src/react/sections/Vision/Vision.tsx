@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type RefObject } from "react";
 import cl from "classnames";
 
 import gsap from "gsap";
@@ -11,8 +11,11 @@ import styles from "./Vision.module.scss";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-export const Vision = () => {
-  const sectionRef = useRef(null);
+interface VisionProps {
+  sectionRef: RefObject<HTMLElement | null>;
+}
+
+export const Vision = ({ sectionRef }: VisionProps) => {
   const wrapperRef = useRef(null);
   const videoRef = useRef(null);
   const titleRef = useRef(null);
@@ -120,6 +123,7 @@ export const Vision = () => {
 
   return (
     <section
+      id="vision"
       ref={sectionRef}
       className={cl("section", "container", styles.vision)}
     >
@@ -139,9 +143,7 @@ export const Vision = () => {
           <p ref={descriptionRef} className={styles.visionDescription}>
             Developing groundbreaking technologies for a greener future.
           </p>
-          <MoreLink path="/" section={sectionRef}>
-            Find Out More
-          </MoreLink>
+          <MoreLink section={sectionRef}>Find Out More</MoreLink>
         </div>
         <h2 ref={titleRef} className={styles.visionTitle}>
           Nature

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type RefObject } from "react";
 import cl from "classnames";
 
 import gsap from "gsap";
@@ -9,8 +9,11 @@ import { PrioritiesCard } from "../../components/card/PrioritiesCard/PrioritiesC
 
 import styles from "./Priorities.module.scss";
 
-export const Priorities = () => {
-  const sectionRef = useRef(null);
+interface PrioritiesProps {
+  sectionRef: RefObject<HTMLElement | null>;
+}
+
+export const Priorities = ({ sectionRef }: PrioritiesProps) => {
   const bgRef = useRef(null);
   const titleRef = useRef(null);
   const listRef = useRef(null);
@@ -114,6 +117,7 @@ export const Priorities = () => {
 
   return (
     <section
+      id="priorities"
       ref={sectionRef}
       className={cl("section", "container", styles.priorities)}
     >

@@ -29,6 +29,10 @@
     font-weight: 500;
     letter-spacing: 0.4px;
     text-align: center;
+
+    @include tablet {
+      margin-top: 40px;
+    }
   }
 
   &List {

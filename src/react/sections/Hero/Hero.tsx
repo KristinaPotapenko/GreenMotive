@@ -1,6 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import cl from "classnames";
+
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 import { useWindowWidth } from "../../../scripts/hooks/useWindowWidth";
 
@@ -14,6 +17,8 @@ import styles from "./Hero.module.scss";
 import mountBg from "./images/mount-bg.png";
 import solarPanelBg from "./images/solar-panel-bg.png";
 import plantBg from "./images/plant-bg.png";
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const slider = [
   {
@@ -36,15 +41,22 @@ const slider = [
   },
 ];
 
-export const Hero = () => {
+interface HeroProps {
+  sectionRef: RefObject<HTMLElement | null>;
+  firstSectionRef: RefObject<HTMLDivElement | null>;
+  secondSectionRef: RefObject<HTMLDivElement | null>;
+}
+
+export const Hero = ({
+  sectionRef,
+  firstSectionRef,
+  secondSectionRef,
+}: HeroProps) => {
   const windowWidth = useWindowWidth();
   const isTablet = windowWidth <= 1023;
 
   const [activeSlide, setActiveSlide] = useState(0);
 
-  const sectionRef = useRef(null);
-  const firstContainerRef = useRef(null);
-  const secondContainerRef = useRef(null);
   const titleRef = useRef(null);
   const descriptionRef = useRef(null);
   const bgRef = useRef(null);
@@ -141,7 +153,7 @@ export const Hero = () => {
         },
         {
           scrollTrigger: {
-            trigger: firstContainerRef.current,
+            trigger: firstSectionRef.current,
             start: "40% center",
             end: "bottom 70%",
             scrub: true,
@@ -247,12 +259,12 @@ export const Hero = () => {
       className={cl("section", { container: !isTablet }, styles.hero)}
     >
       <div
-        ref={firstContainerRef}
+        ref={firstSectionRef}
         className={cl("section", "container", styles.heroDesktop)}
       >
         <div className={styles.heroInner}>
           <Tag
-            section={isTablet ? firstContainerRef : sectionRef}
+            section={isTablet ? firstSectionRef : sectionRef}
             label="Project Green"
             theme="Green"
           />
@@ -261,12 +273,9 @@ export const Hero = () => {
           </h1>
           <div className={styles.heroWrapper}>
             <DecorativeHeartIcon
-              section={isTablet ? firstContainerRef : sectionRef}
+              section={isTablet ? firstSectionRef : sectionRef}
             />
-            <MoreLink
-              section={isTablet ? firstContainerRef : sectionRef}
-              path="/"
-            >
+            <MoreLink section={isTablet ? firstSectionRef : sectionRef}>
               Find Out More
             </MoreLink>
           </div>
@@ -274,7 +283,7 @@ export const Hero = () => {
       </div>
 
       <div
-        ref={secondContainerRef}
+        ref={secondSectionRef}
         className={cl("section", "container", styles.heroDesktop)}
       >
         <div className={cl(styles.heroWrapper, styles.heroSlider)}>

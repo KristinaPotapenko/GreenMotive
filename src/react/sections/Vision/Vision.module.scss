@@ -39,6 +39,10 @@
     margin-top: 100px;
     border-radius: var(--border-radius-small);
 
+    @include tablet {
+      margin-top: 20px;
+    }
+
     @include mobile {
       min-height: 40%;
     }

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type RefObject } from "react";
 import cl from "classnames";
 
 import gsap from "gsap";
@@ -17,11 +17,14 @@ import windmillImage from "./images/windmills.jpg";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(SplitText);
 
-export const Mission = () => {
+interface MissionProps {
+  sectionRef: RefObject<HTMLElement | null>;
+}
+
+export const Mission = ({ sectionRef }: MissionProps) => {
   const windowWidth = useWindowWidth();
   const isTablet = windowWidth <= 1023;
 
-  const sectionRef = useRef(null);
   const tagsRef = useRef(null);
   const titleRef = useRef(null);
   const wrapperRef = useRef(null);
@@ -204,6 +207,7 @@ export const Mission = () => {
 
   return (
     <section
+      id="mission"
       ref={sectionRef}
       className={cl("section", "container", styles.mission)}
     >
@@ -219,29 +223,40 @@ export const Mission = () => {
           resilient future for all.
         </h2>
       )}
-      <div ref={wrapperRef} className={styles.missionWrapper}>
-        <img
-          ref={imageRef}
-          className={styles.missionImage}
-          src={windmillImage}
-          alt="Windmills"
-        />
-        <p ref={descriptionRef} className={styles.missionDescription}>
-          Our innovative green technologies pave the way for energy efficiency,
-          resource conservation, and environmental restoration.
-        </p>
-      </div>
-      {isTablet && (
-        <NavigationLink section={sectionRef} path="/">
-          <svg>
-            <use
-              xlinkHref={`${
-                import.meta.env.BASE_URL
-              }assets/icons/sprite.svg#lightning`}
-            />
-          </svg>
-          Renewable Energy Solutions
-        </NavigationLink>
+      {isTablet ? (
+        <>
+          <img
+            className={styles.missionImage}
+            src={windmillImage}
+            alt="Windmills"
+          />
+          <p className={styles.missionDescription}>
+            Our innovative green technologies pave the way for energy
+            efficiency, resource conservation, and environmental restoration.
+          </p>
+          <NavigationLink section={sectionRef} path="/">
+            <svg>
+              <use
+                xlinkHref={`${
+                  import.meta.env.BASE_URL
+                }assets/icons/sprite.svg#lightning`}
+              />
+            </svg>
+            Renewable Energy Solutions
+          </NavigationLink>
+        </>
+      ) : (
+        <div className={styles.missionWrapper}>
+          <img
+            className={styles.missionImage}
+            src={windmillImage}
+            alt="Windmills"
+          />
+          <p className={styles.missionDescription}>
+            Our innovative green technologies pave the way for energy
+            efficiency, resource conservation, and environmental restoration.
+          </p>
+        </div>
       )}
     </section>
   );

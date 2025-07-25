@@ -25,6 +25,10 @@
     pointer-events: none;
   }
 
+  &Desktop:first-of-type {
+    min-height: calc(100vh - 100px);
+  }
+
   &Desktop {
     min-height: 100vh;
 
