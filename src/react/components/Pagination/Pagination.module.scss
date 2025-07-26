@@ -1,0 +1,60 @@
+@use "../../../styles/abstracts/media" as *;
+@use "../../../styles/abstracts/mixins" as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &Dot {
+    @include square(6px);
+
+    position: relative;
+    background-color: var(--color-gray);
+    border-radius: var(--border-radius-big);
+    transform-origin: center;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -16px;
+      left: -16px;
+      right: -16px;
+      bottom: -16px;
+      z-index: 1;
+    }
+
+    @include hover {
+      border: var(--border-gray-light);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    &Active {
+      padding: 12px;
+      background-color: transparent;
+      border: var(--border-gray-light);
+      border-radius: var(--border-radius-big);
+
+      &::before {
+        content: "";
+        @include abs-center;
+        @include square(8px);
+        background-color: var(--primary-color-dark);
+        border-radius: var(--border-radius-big);
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.4;
+  }
+}
