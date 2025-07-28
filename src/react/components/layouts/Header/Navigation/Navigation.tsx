@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import cl from "classnames";
 
-import styles from "../Header.module.scss";
 import { useWindowWidth } from "../../../../../scripts/hooks/useWindowWidth";
+import { iconHref } from "../../../../../utils/constance";
+
 import { Logo } from "../../../Logo/Logo";
+
+import styles from "../Header.module.scss";
 
 export const Navigation = () => {
   const windowWidth = useWindowWidth();
@@ -12,13 +15,9 @@ export const Navigation = () => {
   return (
     <ul className={styles.headerList}>
       <li className={cl(styles.headerItem, styles.headerItemActive)}>
-        <button>
+        <button type="button">
           <svg>
-            <use
-              xlinkHref={`${
-                import.meta.env.BASE_URL
-              }assets/icons/sprite.svg#menu`}
-            />
+            <use xlinkHref={`${iconHref}menu`} />
           </svg>
           Menu
         </button>
