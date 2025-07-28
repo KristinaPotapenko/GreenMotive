@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, type RefObject } from "react";
 import cl from "classnames";
 
 import gsap from "gsap";
@@ -7,8 +7,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Tag, type TagTheme } from "../../Tag/Tag";
 
 import styles from "./PrioritiesCard.module.scss";
+import { iconHref } from "../../../../utils/constance";
 
 interface PrioritiesCardProps {
+  cardRef?: React.RefObject<HTMLLIElement | null>;
   tagLabel: string;
   tagTheme: TagTheme;
   icon: string;
@@ -19,18 +21,19 @@ interface PrioritiesCardProps {
 gsap.registerPlugin(ScrollTrigger);
 
 export const PrioritiesCard = ({
+  cardRef,
   tagLabel,
   tagTheme,
   icon,
   title,
   section,
 }: PrioritiesCardProps) => {
-  const iconRef = useRef(null);
+  const iconRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
-    if (!iconRef.current || !section) return;
+    if (!iconRef.current || !section || !section?.current) return;
 
-    gsap.fromTo(
+    const animation = gsap.fromTo(
       iconRef.current,
       {
         rotate: 45,
@@ -47,10 +50,15 @@ export const PrioritiesCard = ({
         opacity: 1,
       }
     );
+
+    return () => {
+      animation.scrollTrigger?.kill();
+      animation.kill();
+    };
   }, [section]);
 
   return (
-    <li className={styles.card}>
+    <li ref={cardRef} className={styles.card}>
       <Tag label={tagLabel} theme={tagTheme} />
       <svg
         className={cl(styles.cardIcon, {
@@ -58,11 +66,7 @@ export const PrioritiesCard = ({
         })}
         ref={iconRef}
       >
-        <use
-          xlinkHref={`${
-            import.meta.env.BASE_URL
-          }assets/icons/sprite.svg#${icon}`}
-        />
+        <use xlinkHref={`${iconHref}${icon}`} />
       </svg>
       <h2 className={styles.cardTitle}>{title}</h2>
     </li>

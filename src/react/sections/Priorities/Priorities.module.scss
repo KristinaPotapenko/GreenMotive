@@ -2,7 +2,20 @@
 @use "../../../styles/abstracts/mixins" as *;
 
 .priorities {
+  margin-top: auto;
   min-height: 100vh;
+
+  @include tablet {
+    top: -30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  @include mobile {
+    top: -40px;
+  }
 
   &::after {
     content: "";
@@ -19,6 +32,14 @@
       rgba(255, 255, 255, 1) 80%
     );
     pointer-events: none;
+
+    @include tablet {
+      bottom: -30px;
+    }
+
+    @include mobile {
+      bottom: -40px;
+    }
   }
 
   &Title {
@@ -35,23 +56,36 @@
     }
   }
 
+  &SliderWrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
   &List {
     display: flex;
     justify-content: center;
     flex-wrap: nowrap;
     gap: 50px;
 
+    will-change: transform;
+    transition: transform 0.3s ease;
+
     @include tablet {
       justify-content: start;
       gap: 24px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
     }
 
     @include mobile {
       gap: 0;
     }
+  }
+
+  &Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
   }
 
   &Bg {
@@ -64,5 +98,9 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center bottom;
+
+    @include tablet {
+      top: 25%;
+    }
   }
 }
