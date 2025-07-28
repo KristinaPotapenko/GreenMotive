@@ -1,13 +1,14 @@
-import React, { useEffect, useRef, type RefObject } from "react";
+import React, { useEffect, useRef } from "react";
 import cl from "classnames";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { iconHref } from "../../../../utils/constance";
+
 import { Tag, type TagTheme } from "../../Tag/Tag";
 
 import styles from "./PrioritiesCard.module.scss";
-import { iconHref } from "../../../../utils/constance";
 
 interface PrioritiesCardProps {
   cardRef?: React.RefObject<HTMLLIElement | null>;
