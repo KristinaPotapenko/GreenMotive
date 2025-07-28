@@ -1,0 +1,63 @@
+@use "../../../../styles/abstracts/mixins" as *;
+
+.button {
+  @include reset-button;
+
+  position: relative;
+  max-width: 160px;
+  width: 40vw;
+  height: calc(var(--button-height) * 2);
+  background-color: var(--primary-color-light);
+  border: var(--border-gray-light);
+  border-radius: var(--border-radius-medium);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+  transition: all 0.4s ease;
+  cursor: not-allowed;
+
+  &:hover:not(:disabled) {
+    background-color: var(--primary-color-hover);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: var(--border-gray);
+    outline-offset: 3px;
+  }
+  &:active:not(:disabled) {
+    background-color: var(--primary-color-dark);
+    transform: translateY(1px);
+    box-shadow: none;
+  }
+
+  &Icon {
+    @include square(var(--icon-size-big));
+
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translate(0, -50%);
+    display: block;
+    color: var(--color-gray);
+  }
+
+  &Active {
+    background-color: var(--primary-color-dark);
+    border: var(--border-dark);
+    cursor: pointer;
+
+    .buttonIcon {
+      color: var(--primary-color-light);
+    }
+  }
+
+  &Left {
+    .buttonIcon {
+      left: 8px;
+      transform: rotate(180deg) translate(0, 50%);
+    }
+  }
+}
