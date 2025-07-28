@@ -1,7 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { iconHref } from "../../../utils/constance";
 
 import styles from "./DecorativeHeartIcon.module.scss";
 
@@ -13,10 +15,10 @@ interface DecorativeHeartIconProps {
 
 export const DecorativeHeartIcon = ({ section }: DecorativeHeartIconProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const borderRef = useRef(null);
+  const borderRef = useRef<HTMLDivElement>(null);
   const iconRef = useRef<SVGSVGElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!borderRef.current) return;
 
     gsap.fromTo(
@@ -32,26 +34,41 @@ export const DecorativeHeartIcon = ({ section }: DecorativeHeartIconProps) => {
     );
   }, []);
 
-  useEffect(() => {
-    if (!borderRef.current || !section.current) return;
+  useLayoutEffect(() => {
+    if (!borderRef.current || !iconRef.current || !section?.current) return;
 
-    gsap.fromTo(
-      borderRef.current,
-      { y: 0, opacity: 1 },
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section.current,
+        start: "70% center",
+        end: "bottom center",
+        scrub: true,
+      },
+    });
+
+    tl.to(borderRef.current, {
+      y: -60,
+      opacity: 0,
+      duration: 1.5,
+      ease: "power2.out",
+    });
+
+    tl.to(
+      iconRef.current,
       {
-        scrollTrigger: {
-          trigger: section.current,
-          start: "70% center",
-          end: "bottom center",
-          scrub: true,
-        },
         y: -60,
         opacity: 0,
         duration: 1.5,
         ease: "power2.out",
-      }
+      },
+      "-=1.1"
     );
-  }, []);
+
+    return () => {
+      tl.scrollTrigger?.kill();
+      tl.kill();
+    };
+  }, [section]);
 
   useEffect(() => {
     if (!borderRef.current || !section.current) return;
@@ -123,9 +140,7 @@ export const DecorativeHeartIcon = ({ section }: DecorativeHeartIconProps) => {
     <div ref={wrapperRef} className={styles.wrapper}>
       <div ref={borderRef} className={styles.border}></div>
       <svg ref={iconRef} className={styles.icon}>
-        <use
-          xlinkHref={`${import.meta.env.BASE_URL}assets/icons/sprite.svg#heart`}
-        />
+        <use xlinkHref={`${iconHref}heart`} />
       </svg>
     </div>
   );
