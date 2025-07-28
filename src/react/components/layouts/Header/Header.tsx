@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import cl from "classnames";
 
+import { iconHref } from "../../../../utils/constance";
 import { useWindowWidth } from "../../../../scripts/hooks/useWindowWidth";
 import { animation } from "./animation";
 
@@ -11,7 +12,7 @@ import { NavigationLink } from "../../ui/NavigationLink/NavigationLink";
 import styles from "./Header.module.scss";
 
 export const Header = () => {
-  const headerRef = useRef(null);
+  const headerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (headerRef.current) {
@@ -33,11 +34,7 @@ export const Header = () => {
       {!isTablet && (
         <NavigationLink path="/#vision">
           <svg>
-            <use
-              xlinkHref={`${
-                import.meta.env.BASE_URL
-              }assets/icons/sprite.svg#lightning`}
-            />
+            <use xlinkHref={`${iconHref}lightning`} />
           </svg>
           Renewable Energy Solutions
         </NavigationLink>
