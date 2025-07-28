@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import cl from "classnames";
 
 import gsap from "gsap";
@@ -11,14 +11,22 @@ import styles from "./Footer.module.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const emailInputProps = {
+  id: "email",
+  type: "email",
+  name: "email",
+  pattern: ".+@example\\.com",
+  placeholder: "Enter your Email",
+};
+
 export const Footer = () => {
-  const footerRef = useRef(null);
-  const formRef = useRef(null);
+  const footerRef = useRef<HTMLElement | null>(null);
+  const formRef = useRef<HTMLFormElement | null>(null);
 
-  useEffect(() => {
-    if (!footerRef.current || !footerRef.current) return;
+  useLayoutEffect(() => {
+    if (!footerRef.current || !formRef.current) return;
 
-    gsap.fromTo(
+    const animation = gsap.fromTo(
       formRef.current,
       {
         y: 20,
@@ -35,20 +43,26 @@ export const Footer = () => {
         opacity: 1,
       }
     );
+
+    return () => {
+      animation.scrollTrigger?.kill();
+      animation.kill();
+    };
   }, []);
 
   return (
     <footer ref={footerRef} className={cl("container", styles.footer)}>
       <Logo section={footerRef} />
       <form ref={formRef} className={styles.footerForm}>
-        <Input
-          id="email"
-          type="email"
-          name="email"
-          pattern=".+@example\.com"
-          placeholder="Enter your Email"
-        />
-        <button className={styles.footerButton}>Request</button>
+        <Input {...emailInputProps} />
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+          className={styles.footerButton}
+        >
+          Request
+        </button>
       </form>
     </footer>
   );
