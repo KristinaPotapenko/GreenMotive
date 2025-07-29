@@ -3,6 +3,7 @@ import cl from "classnames";
 
 import gsap from "gsap";
 
+import { animation } from "./animation";
 import { useWindowWidth } from "../../../scripts/hooks/useWindowWidth";
 import { prioritiesInfo } from "./prioritiesInfo";
 
@@ -21,106 +22,11 @@ export const Priorities = ({ sectionRef }: PrioritiesProps) => {
   const isTablet = windowWidth <= 1023;
   const isMobile = windowWidth <= 767;
 
-  const bgRef = useRef(null);
-  const titleRef = useRef(null);
+  const bgRef = useRef<HTMLDivElement | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
-  useEffect(() => {
-    if (!titleRef.current || !sectionRef.current) return;
-
-    gsap.fromTo(
-      titleRef.current,
-      {
-        y: 40,
-        opacity: 0,
-      },
-      {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "-20% center",
-          end: "center center",
-          scrub: true,
-        },
-        y: 0,
-        opacity: 1,
-      }
-    );
-  }, []);
-
-  useEffect(() => {
-    if (!titleRef.current || !listRef.current || !sectionRef.current) return;
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "center center",
-        end: "bottom center",
-        scrub: true,
-      },
-    });
-    tl.to(titleRef.current, {
-      y: -60,
-      opacity: 0,
-      duration: 1.5,
-      ease: "power2.out",
-    });
-
-    tl.to(
-      listRef.current,
-      {
-        y: -100,
-        duration: 1.5,
-        ease: "power2.out",
-      },
-      "-=0.2"
-    );
-  }, []);
-
-  useEffect(() => {
-    if (!bgRef.current || !sectionRef.current) return;
-
-    gsap.fromTo(
-      bgRef.current,
-      {
-        y: 80,
-        opacity: 0,
-      },
-      {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top center",
-          end: "60% center",
-          scrub: true,
-        },
-        y: 0,
-        opacity: 1,
-      }
-    );
-  }, []);
-
-  useEffect(() => {
-    if (!listRef.current || !sectionRef.current) return;
-
-    gsap.fromTo(
-      listRef.current,
-      {
-        y: 80,
-        rotateX: 15,
-        transformOrigin: "top center",
-      },
-      {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top center",
-          end: "center center",
-          scrub: true,
-        },
-        y: 0,
-        rotateX: 0,
-        ease: "power3.out",
-      }
-    );
-  }, []);
+  animation({ sectionRef, titleRef, listRef, bgRef });
 
   const slideRef = useRef<HTMLLIElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -128,6 +34,9 @@ export const Priorities = ({ sectionRef }: PrioritiesProps) => {
   const [slideWidth, setSlideWidth] = useState(0);
 
   const totalSlides = listRef.current?.children.length ?? 0;
+  const visibleSlides = isMobile ? 1 : isTablet ? 2 : 3;
+
+  const isLastSlide = activeSlide >= totalSlides - visibleSlides;
 
   const [offset, setOffset] = useState(0);
 
@@ -159,7 +68,7 @@ export const Priorities = ({ sectionRef }: PrioritiesProps) => {
     const newOffset = offset - slideWidth;
 
     gsap.to(listRef.current, {
-      x: isTablet ? newOffset + 24 : newOffset,
+      x: isMobile ? newOffset : newOffset - 24,
       overwrite: true,
     });
 
@@ -173,7 +82,7 @@ export const Priorities = ({ sectionRef }: PrioritiesProps) => {
     const newOffset = offset + slideWidth;
 
     gsap.to(listRef.current, {
-      x: isTablet ? newOffset - 24 : newOffset,
+      x: isMobile ? newOffset : newOffset + 24,
       overwrite: true,
     });
 
@@ -241,19 +150,9 @@ export const Priorities = ({ sectionRef }: PrioritiesProps) => {
           />
           <PaginationButton
             onClick={handleNextSlide}
-            isActive={
-              isMobile && activeSlide === totalSlides - 1
-                ? false
-                : isTablet && activeSlide === totalSlides - 2
-                ? false
-                : true
-            }
+            isActive={!isLastSlide}
             direction="Right"
-            disabled={
-              isMobile
-                ? activeSlide === totalSlides - 1
-                : activeSlide === totalSlides - 2
-            }
+            disabled={isLastSlide}
           />
         </div>
       )}
