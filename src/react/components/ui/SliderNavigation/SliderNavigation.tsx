@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import gsap from "gsap";
 import cl from "classnames";
+
+import gsap from "gsap";
 
 import { useWindowWidth } from "../../../../scripts/hooks/useWindowWidth";
 
@@ -22,6 +23,7 @@ export const SliderNavigation = ({
 
   useEffect(() => {
     const items = gsap.utils.toArray<HTMLElement>("[data-item]");
+
     gsap.fromTo(
       items,
       { opacity: 0, y: 60 },
@@ -36,42 +38,22 @@ export const SliderNavigation = ({
   }, []);
 
   useEffect(() => {
-    if (!section) return;
+    if (!section?.current) return;
 
     const items = gsap.utils.toArray<HTMLElement>("[data-item]");
 
-    if (isTablet) {
-      gsap.fromTo(
-        items,
-        { y: 0, opacity: 1 },
-        {
-          scrollTrigger: {
-            trigger: section.current,
-            start: "80% center",
-            end: "+=300px",
-            scrub: true,
-          },
-          opacity: 0,
-          y: -60,
-          duration: 1,
-          stagger: 0.2,
-          ease: "power3.out",
-        }
-      );
+    const triggerConfig = {
+      trigger: section.current,
+      start: isTablet ? "80% center" : "90% center",
+      end: "+=300px",
+      scrub: true,
+    };
 
-      return;
-    }
-
-    gsap.fromTo(
+    const animation = gsap.fromTo(
       items,
       { y: 0, opacity: 1 },
       {
-        scrollTrigger: {
-          trigger: section.current,
-          start: "90% center",
-          end: "+=300px",
-          scrub: true,
-        },
+        scrollTrigger: triggerConfig,
         opacity: 0,
         y: -60,
         duration: 1,
@@ -79,37 +61,25 @@ export const SliderNavigation = ({
         ease: "power3.out",
       }
     );
-  }, []);
+
+    return () => {
+      animation.scrollTrigger?.kill();
+    };
+  }, [section, isTablet]);
 
   return (
     <ul className={styles.navigation}>
-      <li
-        className={cl(styles.navigationItem, {
-          [styles.navigationItemActive]: activeSlide === 0,
-        })}
-        data-item
-        onClick={() => onChangeSlide(0)}
-      >
-        01
-      </li>
-      <li
-        className={cl(styles.navigationItem, {
-          [styles.navigationItemActive]: activeSlide === 1,
-        })}
-        data-item
-        onClick={() => onChangeSlide(1)}
-      >
-        02
-      </li>
-      <li
-        className={cl(styles.navigationItem, {
-          [styles.navigationItemActive]: activeSlide === 2,
-        })}
-        data-item
-        onClick={() => onChangeSlide(2)}
-      >
-        03
-      </li>
+      {Array.from({ length: 3 }, (_, index) => (
+        <li
+          className={cl(styles.navigationItem, {
+            [styles.navigationItemActive]: activeSlide === index,
+          })}
+          data-item
+          onClick={() => onChangeSlide(index)}
+        >
+          {`0${index + 1}`}
+        </li>
+      ))}
     </ul>
   );
 };
