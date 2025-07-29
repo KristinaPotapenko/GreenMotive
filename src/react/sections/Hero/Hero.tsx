@@ -208,6 +208,7 @@ export const Hero = ({
 
   return (
     <section
+      id="home"
       ref={sectionRef}
       className={cl("section", { container: !isTablet }, styles.hero)}
     >
