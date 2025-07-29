@@ -1,4 +1,4 @@
-import { useEffect, useRef, type RefObject } from "react";
+import { useRef, type RefObject } from "react";
 import cl from "classnames";
 
 import gsap from "gsap";
@@ -16,110 +16,10 @@ interface VisionProps {
 }
 
 export const Vision = ({ sectionRef }: VisionProps) => {
-  const wrapperRef = useRef(null);
-  const videoRef = useRef(null);
-  const titleRef = useRef(null);
-  const descriptionRef = useRef(null);
-
-  useEffect(() => {
-    if (!sectionRef.current || !videoRef.current || !titleRef.current) return;
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top center",
-        end: "bottom center",
-        scrub: true,
-      },
-    });
-
-    tl.fromTo(
-      videoRef.current,
-      {
-        y: 80,
-        opacity: 0.5,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1.5,
-        ease: "power2.out",
-      }
-    );
-
-    tl.fromTo(
-      titleRef.current,
-      {
-        y: 60,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1.5,
-        ease: "power2.out",
-      },
-      "-=1"
-    );
-  });
-
-  useEffect(() => {
-    if (!descriptionRef.current) return;
-
-    const splitInstance = SplitText.create(descriptionRef.current, {
-      type: "words",
-      aria: "hidden",
-    });
-
-    gsap.fromTo(
-      splitInstance.words,
-      { y: 20, opacity: 0 },
-      {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "40% center",
-          toggleActions: "restart none none none",
-        },
-        opacity: 1,
-        y: 0,
-        duration: 1.5,
-        ease: "power3.out",
-        stagger: 0.06,
-      }
-    );
-  }, []);
-
-  useEffect(() => {
-    if (!wrapperRef.current || !sectionRef.current) return;
-
-    const anim = gsap.fromTo(
-      wrapperRef.current,
-      {
-        y: 0,
-        opacity: 1,
-      },
-      {
-        y: 60,
-        opacity: 0,
-        duration: 1,
-        ease: "power4.out",
-        paused: true,
-      }
-    );
-
-    ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: "bottom bottom",
-      end: "top center",
-      onUpdate: (self) => {
-        if (self.direction === -1) {
-          anim.play();
-        } else {
-          anim.reverse();
-        }
-      },
-    });
-  }, []);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const descriptionRef = useRef<HTMLParagraphElement | null>(null);
 
   return (
     <section
