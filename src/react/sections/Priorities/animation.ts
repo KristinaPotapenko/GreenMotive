@@ -1,5 +1,9 @@
-import gsap from "gsap";
 import { useEffect, type RefObject } from "react";
+
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const animation = ({
   sectionRef,
