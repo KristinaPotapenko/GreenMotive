@@ -38,4 +38,7 @@ l-29 3 47 59 c47 59 64 61 45 6z">
     <line x1="15" y1="1.20206e-07" x2="15" y2="12" stroke="#0F0F0F" stroke-width="6"></line>
     <line x1="15" y1="18" x2="15" y2="30" stroke="#0F0F0F" stroke-width="6"></line>
   </symbol>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="arrow">
+    <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
 </svg>
