@@ -15,16 +15,17 @@ export const Pagination = ({
 }: PaginationProps) => {
   return (
     <ul className={styles.pagination}>
-      {Array.from({ length: totalSlides }, (slide, index) => {
-        return (
-          <li
+      {Array.from({ length: totalSlides }, (_, index) => (
+        <li key={index}>
+          <button
+            type="button"
+            onClick={() => handleSelectSlide(index)}
             className={cl(styles.paginationDot, {
               [styles.paginationDotActive]: activeSlide === index,
             })}
-            onClick={() => handleSelectSlide(index)}
-          ></li>
-        );
-      })}
+          />
+        </li>
+      ))}
     </ul>
   );
 };
