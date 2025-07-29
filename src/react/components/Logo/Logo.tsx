@@ -57,7 +57,7 @@ export const Logo = ({ section }: LogoProps) => {
     <Link
       ref={logoRef}
       className={styles.logo}
-      to="/#header"
+      to="/#content"
       onClick={scrollToTop}
     >
       <svg ref={logoIconRef} className={styles.logoIcon}>

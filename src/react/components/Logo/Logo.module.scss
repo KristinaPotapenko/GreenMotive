@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 
   &Icon {
     @include square(var(--icon-size-big));
