@@ -6,8 +6,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { scrollToTop } from "../../../scripts/helpers/scrollToTop";
 
-import styles from "./Logo.module.scss";
 import { iconHref } from "../../../utils/constance";
+
+import styles from "./Logo.module.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
