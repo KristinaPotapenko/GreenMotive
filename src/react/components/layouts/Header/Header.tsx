@@ -30,7 +30,7 @@ export const Header = () => {
       className={cl(styles.header, "container")}
     >
       {!isTablet && <Logo section={headerRef} />}
-      <Navigation />
+      <Navigation section={headerRef} />
       {!isTablet && (
         <NavigationLink path="/#vision">
           <svg>

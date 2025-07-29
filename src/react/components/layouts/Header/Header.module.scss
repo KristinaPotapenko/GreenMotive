@@ -18,6 +18,7 @@
   &List {
     @include flex-center;
 
+    position: relative;
     gap: 32px;
     padding: 8px;
     background-color: var(--primary-color-dark);
