@@ -5,7 +5,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 
+import { animation } from "./animation";
 import { useWindowWidth } from "../../../scripts/hooks/useWindowWidth";
+import { iconHref } from "../../../utils/constance";
 
 import { Tag } from "../../components/Tag/Tag";
 import { NavigationLink } from "../../components/ui/NavigationLink/NavigationLink";
@@ -25,53 +27,14 @@ export const Mission = ({ sectionRef }: MissionProps) => {
   const windowWidth = useWindowWidth();
   const isTablet = windowWidth <= 1023;
 
-  const tagsRef = useRef(null);
-  const titleRef = useRef(null);
-  const wrapperRef = useRef(null);
-  const imageRef = useRef(null);
-  const descriptionRef = useRef(null);
+  const tagsRef = useRef<HTMLDivElement | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  const descriptionRef = useRef<HTMLParagraphElement | null>(null);
 
   useEffect(() => {
-    if (!tagsRef.current || !sectionRef.current) return;
-
-    if (isTablet) {
-      gsap.fromTo(
-        tagsRef.current,
-        {
-          y: 0,
-          opacity: 1,
-        },
-        {
-          y: -80,
-          opacity: 0.2,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "center center",
-            end: "+=600px",
-            scrub: true,
-          },
-        }
-      );
-    } else {
-      gsap.fromTo(
-        tagsRef.current,
-        {
-          y: 80,
-          opacity: 0.2,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "-20% center",
-            end: "center center",
-            scrub: true,
-          },
-        }
-      );
-    }
+    animation(tagsRef, sectionRef.current, isTablet);
   }, [isTablet]);
 
   useEffect(() => {
@@ -236,11 +199,7 @@ export const Mission = ({ sectionRef }: MissionProps) => {
           </p>
           <NavigationLink section={sectionRef} path="/">
             <svg>
-              <use
-                xlinkHref={`${
-                  import.meta.env.BASE_URL
-                }assets/icons/sprite.svg#lightning`}
-              />
+              <use xlinkHref={`${iconHref}lightning`} />
             </svg>
             Renewable Energy Solutions
           </NavigationLink>
