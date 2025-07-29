@@ -71,6 +71,7 @@ export const SliderNavigation = ({
     <ul className={styles.navigation}>
       {Array.from({ length: 3 }, (_, index) => (
         <li
+          key={index}
           className={cl(styles.navigationItem, {
             [styles.navigationItemActive]: activeSlide === index,
           })}
