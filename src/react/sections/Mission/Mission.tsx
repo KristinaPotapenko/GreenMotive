@@ -197,7 +197,7 @@ export const Mission = ({ sectionRef }: MissionProps) => {
             Our innovative green technologies pave the way for energy
             efficiency, resource conservation, and environmental restoration.
           </p>
-          <NavigationLink section={sectionRef} path="/">
+          <NavigationLink section={sectionRef} path="/#vision">
             <svg>
               <use xlinkHref={`${iconHref}lightning`} />
             </svg>
