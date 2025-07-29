@@ -17,9 +17,11 @@ interface TagProps {
 }
 
 export const Tag = ({ label, theme, section }: TagProps) => {
-  const tagRef = useRef(null);
+  const tagRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
+    if (!tagRef.current) return;
+
     gsap.fromTo(
       tagRef.current,
       {
@@ -55,7 +57,7 @@ export const Tag = ({ label, theme, section }: TagProps) => {
         },
       }
     );
-  }, []);
+  }, [section]);
 
   return (
     <p ref={tagRef} className={cl(styles.tag, styles[`tag${theme}`])}>
