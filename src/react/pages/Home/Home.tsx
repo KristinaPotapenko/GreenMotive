@@ -1,15 +1,17 @@
-import { useEffect, useRef, type RefObject } from "react";
+import { useEffect, useMemo, useRef } from "react";
+import { useLocation } from "react-router-dom";
 
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { useScrollSnapNavigation } from "../../../scripts/hooks/useScrollSnapNavigation";
+import { useWindowWidth } from "../../../scripts/hooks/useWindowWidth";
+
 import { Hero } from "../../sections/Hero/Hero";
 import { Mission } from "../../sections/Mission/Mission";
 import { Priorities } from "../../sections/Priorities/Priorities";
 import { Vision } from "../../sections/Vision/Vision";
-import { useLocation } from "react-router-dom";
-import { useWindowWidth } from "../../../scripts/hooks/useWindowWidth";
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
@@ -29,73 +31,24 @@ export const Home = () => {
 
   const isAnchorScroll = useRef(false);
 
-  const sectionRefs: RefObject<HTMLElement | null>[] = isTablet
-    ? [
-        heroFirstSectionRef,
-        heroSecondSectionRef,
-        missionSectionRef,
-        prioritiesSectionRef,
-        visionSectionRef,
-      ]
-    : [
-        heroSectionRef,
-        missionSectionRef,
-        prioritiesSectionRef,
-        visionSectionRef,
-      ];
-
-  useEffect(() => {
-    let observer: any;
-    let scrollTween: gsap.core.Tween | null = null;
-
-    if (ScrollTrigger.isTouch === 1) {
-      observer = ScrollTrigger.normalizeScroll(true);
-    }
-
-    document.addEventListener(
-      "touchstart",
-      (e) => {
-        if (scrollTween) {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-        }
-      },
-      { capture: true, passive: false }
-    );
-
-    function goToSection(i: number) {
-      scrollTween = gsap.to(window, {
-        scrollTo: {
-          y: isTablet ? i * window.innerHeight + 24 : i * window.innerHeight,
-          autoKill: false,
-        },
-        onStart: () => {
-          if (!observer) return;
-          observer.disable();
-          observer.enable();
-        },
-        ease: "none",
-        duration: 0.3,
-        onComplete: () => {
-          scrollTween = null;
-        },
-        overwrite: true,
-      });
-    }
-
-    sectionRefs.forEach((sectionRef, i) => {
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: isTablet ? "top+=24px bottom" : "top+=40px bottom",
-        end: isTablet ? "bottom-=48px top" : "bottom top+=24px",
-        onToggle: (self) => {
-          if (self.isActive && !scrollTween && !isAnchorScroll.current) {
-            goToSection(i);
-          }
-        },
-      });
-    });
+  const sectionRefs = useMemo(() => {
+    return isTablet
+      ? [
+          heroFirstSectionRef,
+          heroSecondSectionRef,
+          missionSectionRef,
+          prioritiesSectionRef,
+          visionSectionRef,
+        ]
+      : [
+          heroSectionRef,
+          missionSectionRef,
+          prioritiesSectionRef,
+          visionSectionRef,
+        ];
   }, [isTablet]);
+
+  useScrollSnapNavigation(sectionRefs, isTablet, isAnchorScroll);
 
   useEffect(() => {
     if (location.hash) {
@@ -110,6 +63,15 @@ export const Home = () => {
       }, 500);
     }
   }, [location]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
