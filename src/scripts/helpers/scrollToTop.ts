@@ -1,9 +1,6 @@
-import type React from "react";
-
 import smoothscroll from "smoothscroll-polyfill";
 
-export const scrollToTop = (e: React.MouseEvent) => {
-  e.preventDefault();
+export const scrollToTop = () => {
   smoothscroll.polyfill();
 
   window.scrollTo({ top: 0, behavior: "smooth" });
