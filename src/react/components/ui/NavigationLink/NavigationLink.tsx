@@ -20,14 +20,16 @@ export const NavigationLink = ({
   section,
   children,
 }: NavigationLinkProps) => {
-  const linkRef = useRef(null);
+  const linkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
-    if (!section) return;
-    if (!linkRef.current || !section.current) return;
+    const link = linkRef.current;
 
-    gsap.fromTo(
-      linkRef.current,
+    if (!section) return;
+    if (!link || !section?.current) return;
+
+    const animation = gsap.fromTo(
+      link,
       {
         y: 0,
         opacity: 1,
@@ -42,7 +44,11 @@ export const NavigationLink = ({
         opacity: 0,
       }
     );
-  }, []);
+
+    return () => {
+      animation.scrollTrigger?.kill();
+    };
+  }, [section]);
 
   return (
     <Link ref={linkRef} to={path} className={styles.button}>
