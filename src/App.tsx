@@ -6,7 +6,7 @@ import { Footer } from "./react/components/layouts/Footer/Footer";
 
 function App() {
   return (
-    <div className="wrapper">
+    <div id="content" className="wrapper">
       <Header />
       <main>
         <Routes>
