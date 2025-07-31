@@ -51,13 +51,13 @@
   border-radius: var(--border-radius-small);
   transition: background-color 0.3s ease, color 0.3s ease;
 
+  cursor: pointer;
+  text-align: center;
+
   @include hover {
     background-color: var(--color-green);
     color: var(--primary-color-dark);
   }
-
-  cursor: pointer;
-  text-align: center;
 
   @include tablet {
     padding: 10px 16px;
