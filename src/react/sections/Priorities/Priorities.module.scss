@@ -4,6 +4,7 @@
 .priorities {
   margin-top: auto;
   min-height: 100vh;
+  overflow: hidden;
 
   @include tablet {
     top: -30px;
@@ -89,18 +90,20 @@
   }
 
   &Bg {
-    @include abs-center;
-
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
     z-index: -1;
-    width: 40vh;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-image: url("./images/rock.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center bottom;
 
     @include tablet {
-      top: 25%;
+      top: 30%;
     }
   }
 }
