@@ -58,4 +58,8 @@ main {
   @include desktop {
     padding-top: 60px;
   }
+
+  @include mobile-s {
+    padding-top: 40px;
+  }
 }
