@@ -1,0 +1,44 @@
+<svg width="0" height="0" class="hidden">
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 199 194" id="logo">
+    <path d="M87 50.5L119.5 18.5L163.5 31.5" stroke="#DDE4C3" stroke-width="20"></path>
+    <path d="M112.499 141L80.165 173.168L36.0983 160.396" stroke="#DDE4C3" stroke-width="20"></path>
+    <path d="M67.505 128.02L23.1832 117.258L11.0491 73.0109" stroke="#DDE4C3" stroke-width="20"></path>
+    <path d="M55.5557 83.708L41.6678 40.264L73.1264 6.86712" stroke="#DDE4C3" stroke-width="20"></path>
+    <path d="M144.663 110L156.515 154.043L123.538 185.941" stroke="#DDE4C3" stroke-width="20"></path>
+    <path d="M133 63.9569L176.944 76.171L187.616 120.793" stroke="#DDE4C3" stroke-width="20"></path>
+  </symbol>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="menu">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M4 5C3.44772 5 3 5.44772 3 6C3 6.55228 3.44772 7 4 7H20C20.5523 7 21 6.55228 21 6C21 5.44772 20.5523 5 20 5H4ZM3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12ZM3 18C3 17.4477 3.44772 17 4 17H20C20.5523 17 21 17.4477 21 18C21 18.5523 20.5523 19 20 19H4C3.44772 19 3 18.5523 3 18Z" fill="#000000"></path>
+  </symbol>
+  <symbol version="1.0" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 50.000000 50.000000" id="lightning">
+    <g transform="translate(0.000000,50.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+      <path d="M161 483 c-88 -31 -161 -136 -161 -233 0 -132 118 -250 250 -250 60
+0 130 30 175 75 188 188 -12 497 -264 408z m111 -183 c-10 -27 -9 -29 19 -32
+l29 -3 -46 -58 c-26 -32 -48 -56 -51 -53 -2 2 0 20 5 40 10 34 9 35 -19 38
+l-29 3 47 59 c47 59 64 61 45 6z">
+      </path>
+    </g>
+  </symbol>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 33" id="heart">
+    <path d="M6.88095 6.58L1 12.16L15.2381 26.42M6.88095 6.58L12.7619 1L20.8095 9.06L28.8571 1L34.4286 6.58M6.88095 6.58L20.8095 20.84L20.1119 21.5387M15.2381 26.42L20.8095 32L40 12.16L34.4286 6.58M15.2381 26.42L20.1119 21.5387M34.4286 6.58L20.1119 21.5387" stroke="black"></path>
+  </symbol>
+    <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" id="development">
+    <line y1="15" x2="12" y2="15" stroke="#0F0F0F" stroke-width="6"></line>
+    <line x1="18" y1="15" x2="30" y2="15" stroke="#0F0F0F" stroke-width="6"></line>
+    <line x1="15" y1="1.20206e-07" x2="15" y2="12" stroke="#0F0F0F" stroke-width="6"></line>
+    <line x1="15" y1="18" x2="15" y2="30" stroke="#0F0F0F" stroke-width="6"></line>
+  </symbol>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 26" id="manegement">
+    <path d="M3 20V9L9 3H21" stroke="#0F0F0F" stroke-width="6"></path>
+    <path d="M24 6L24 17L18 23L6 23" stroke="#0F0F0F" stroke-width="6"></path>
+  </symbol>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" id="resources">
+    <line y1="15" x2="12" y2="15" stroke="#0F0F0F" stroke-width="6"></line>
+    <line x1="18" y1="15" x2="30" y2="15" stroke="#0F0F0F" stroke-width="6"></line>
+    <line x1="15" y1="1.20206e-07" x2="15" y2="12" stroke="#0F0F0F" stroke-width="6"></line>
+    <line x1="15" y1="18" x2="15" y2="30" stroke="#0F0F0F" stroke-width="6"></line>
+  </symbol>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="arrow">
+    <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
+</svg>
