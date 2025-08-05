@@ -1,69 +1,47 @@
-# React + TypeScript + Vite
+# 🌱 GreenMotive — Eco Innovation Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**GreenMotive** is a modern, animated landing page promoting sustainable technologies and eco-innovation.  
+Built with **React**, **TypeScript**, **GSAP**, **Vite**, and **SCSS**, with experimental **Three.js** elements.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🌄 **Hero section** with animated 3D torus and scroll interaction  
+- 🌿 Minimalist aesthetic with focus on clean, eco-friendly visuals  
+- 🎞️ Smooth **GSAP animations** and scroll-based transitions  
+- 📱 Fully responsive: mobile / tablet / desktop  
+- 🧩 Reusable components and flexible layout  
+- 🖼️ Transparent overlays and soft gradients for a natural look  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## ⚙️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- ⚛️ React + TypeScript (Vite)
+- 🎨 SCSS Modules  
+- 🎞️ GSAP + ScrollTrigger for animations  
+- 🌀 Three.js (animated shader-based torus with grass)  
+- 🔁 Custom hooks and reusable logic  
+- 📦 Lightweight and fast build with Vite
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📷 Preview
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+![GreenMotive Preview](https://github.com/KristinaPotapenko/Weatherly/blob/main/projectGreenMotive.png)
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 📬 Contact
+
+Have questions or feedback? Feel free to reach out:  
+📧 [potapenkokristina10@gmail.com](mailto:potapenkokristina10@gmail.com)  
+🔗 [Telegram](https://t.me/kristina_potapenko)  
+🌐 Coming soon: [Live Demo](https://kristinapotapenko.github.io/GreenMotive/)
+
+---
+
+## ⭐ Support
+
+If you like this project, consider starring it on [GitHub](https://github.com/KristinaPotapenko/GreenMotive) and sharing it!
