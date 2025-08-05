@@ -29,7 +29,7 @@ Built with **React**, **TypeScript**, **GSAP**, **Vite**, and **SCSS**, with exp
 
 ## 📷 Preview
 
-![GreenMotive Preview](https://github.com/KristinaPotapenko/Weatherly/blob/main/projectGreenMotive.png)
+![GreenMotive Preview](https://github.com/KristinaPotapenko/GreenMotive/blob/main/projectGreenMotive.png)
 
 ---
 
